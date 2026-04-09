@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Git Practice - Task Manager</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>📝 Task Manager</h1>
+    <p class="subtitle">A project to practice Git & GitHub</p>
+    <div class="input-row">
+      <input type="text" id="task-input" placeholder="Add a new task..." />
+      <button onclick="addTask()">Add</button>
+    </div>
+    <ul id="task-list">
+      {% for task in tasks %}
+      <li class="task-item {% if task.done %}done{% endif %}" id="task-{{ task.id }}">
+        <span onclick="toggleTask({{ task.id }})">{{ task.text }}</span>
+        <button class="delete-btn" onclick="deleteTask({{ task.id }})">✕</button>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  <script src="/static/main.js"></script>
+</body>
+</html>
